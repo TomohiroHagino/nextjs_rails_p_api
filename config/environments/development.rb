@@ -51,15 +51,4 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   # localhost:3000では通信に失敗するためhostをdocker-compose.ymlのコンテナ名に合わせる
   config.hosts << "api"
-
-  # cors
-  config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins 'http://localhost:8000' # リクエスト元となるOriginsを記載する
-      resource '*',
-               headers: :any,
-               methods: %i[get post put patch delete options head],
-               credentials: true  # trueとすること
-    end
-  end
 end
