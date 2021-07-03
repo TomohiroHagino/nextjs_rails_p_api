@@ -5,7 +5,11 @@ module Api
 
     def index
       me = Me.myself_react_and_next_js_skills
-      react_and_next_js_skills_json = ReactNextJsSerializer.new(me)
+      react_and_next_js_skills_json = MeReactNextJsSerializer.new({
+                                        me: me,
+                                        react_js_skills: me.react_skills,
+                                        next_js_skills: me.next_js_skills,
+                                        })
       render json: react_and_next_js_skills_json 
     end
 
@@ -37,9 +41,9 @@ module Api
     private
     def set_mes_react_or_next_js_skill
       @react_or_next_js_skill = Me.set_me_includes_react_and_next_js_skill({
-        type: params[:id],
-        params: react_or_next_js_skill_params
-        })
+                                    type: params[:id],
+                                    params: react_or_next_js_skill_params
+                                    })
     end
     def react_or_next_js_skill_params ; params.require(:react_or_next_js_skill).permit(:type, :title, :body) ; end
   end

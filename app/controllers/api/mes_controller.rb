@@ -1,5 +1,5 @@
 module Api
-  class RailsSkillsController < ApplicationController
+  class MesController < ApplicationController
     before_action :authenticate_api_user!
     before_action :set_me, only: [:show, :update]
 
@@ -8,7 +8,7 @@ module Api
     end
 
     def update
-      rails_skill = RailsSkillUpdator.new({
+      rails_skill = MeUpdator.new({
                       obj: @rails_skill,
                       params: rails_skill_params
                       })
