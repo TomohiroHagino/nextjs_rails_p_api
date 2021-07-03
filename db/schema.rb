@@ -10,13 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_104813) do
+ActiveRecord::Schema.define(version: 2021_06_29_160631) do
+
+  create_table "mes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "introduce", limit: 500, comment: "前置き文"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "next_js_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title", limit: 50, comment: "タイトル"
+    t.string "body", limit: 5000, comment: "内容"
+    t.bigint "me_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["me_id"], name: "index_next_js_skills_on_me_id"
+  end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", limit: 50, comment: "タイトル"
     t.string "content", limit: 500, comment: "内容"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rails_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title", limit: 50, comment: "タイトル"
+    t.string "body", limit: 5000, comment: "内容"
+    t.bigint "me_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["me_id"], name: "index_rails_skills_on_me_id"
+  end
+
+  create_table "react_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title", limit: 50, comment: "タイトル"
+    t.string "body", limit: 5000, comment: "内容"
+    t.bigint "me_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["me_id"], name: "index_react_skills_on_me_id"
+  end
+
+  create_table "ruby_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title", limit: 50, comment: "タイトル"
+    t.string "body", limit: 5000, comment: "内容"
+    t.bigint "me_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["me_id"], name: "index_ruby_skills_on_me_id"
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -43,4 +85,8 @@ ActiveRecord::Schema.define(version: 2021_06_11_104813) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "next_js_skills", "mes"
+  add_foreign_key "rails_skills", "mes"
+  add_foreign_key "react_skills", "mes"
+  add_foreign_key "ruby_skills", "mes"
 end
