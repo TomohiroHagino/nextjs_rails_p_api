@@ -14,7 +14,7 @@ module Api
     end
 
     def create
-      react_or_next_js_skill = ReactOrNextJsSkillCreator.new({params: react_or_next_js_skill_params})
+      react_or_next_js_skill = ReactOrNextJsSkillCreator.new({ params: react_or_next_js_skill_params })
       react_or_next_js_skill[:success] ? { render json: react_or_next_js_skill[:response], status: :created }
                                        : { render json: react_or_next_js_skill[:errors], status: :unprocessable_entity }
     end
@@ -29,10 +29,7 @@ module Api
     end
 
     def destroy
-      rails_skill = ReactOrNextJsSkillDeleter.new({
-                      obj: @react_or_next_js_skill,
-                      params: react_or_next_js_skill_params
-                      })
+      rails_skill = ReactOrNextJsSkillDeleter.new({ obj: @react_or_next_js_skill })
       rails_skill[:success] ? { render json: react_or_next_js_skill[:response] }
                             : { render json: react_or_next_js_skill[:errors], status: :unprocessable_entity }
     end

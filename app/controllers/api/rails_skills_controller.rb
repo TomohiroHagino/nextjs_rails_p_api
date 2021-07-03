@@ -19,13 +19,16 @@ module Api
     end
 
     def update
-      rails_skill = RailsSkillUpdator.new({params: rails_skill_params})
+      rails_skill = RailsSkillUpdator.new({
+                      obj: @rails_skill,
+                      params: rails_skill_params
+                      })
       rails_skill[:status] ? { render json: rails_skill[:response] }
                            : { render json: rails_skill[:errors], status: :unprocessable_entity }
     end
 
     def destroy
-      rails_skill = RailsSkillDeleter.new({{params: rails_skill_params}})
+      rails_skill = RailsSkillDeleter.new({{ obj: @rails_skill }})
       rails_skill[:status] ? { render json: rails_skill[:response] }
                            : { render json: rails_skill[:errors], status: :unprocessable_entity }
     end
