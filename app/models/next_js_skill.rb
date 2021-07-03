@@ -1,0 +1,2 @@
+class NextJsSkill < ApplicationRecord
+end
