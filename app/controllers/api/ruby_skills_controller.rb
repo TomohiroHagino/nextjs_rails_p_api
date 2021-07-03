@@ -1,7 +1,7 @@
 module Api
   class RubySkillsController < ApplicationController
     before_action :authenticate_api_user!
-    before_action :set_post, only: [:show, :update, :destroy, :destroy]
+    before_action :set_ruby_skill, only: [:show, :update, :destroy, :destroy]
 
     def index
       ruby_skills = RubySkill.myself_ruby_skills

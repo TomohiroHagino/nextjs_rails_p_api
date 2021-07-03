@@ -4,36 +4,29 @@ Rails.application.routes.draw do
       registrations: 'api/auth/registrations'
     }
 
-    # posts
-    get    '/list-post',          to: 'posts#index'
-    get    '/detail-post/:id',        to: 'posts#show'
-    # get    '/:user_id/edit',          to: 'users#edit'
-    # post   '/:user_id/update',            to: 'users#update'
-    # get    '/:user_id/update_before_check', to: 'users#update_before_check'
-    # get    '/:user_id/delete_before_check', to: 'users#destroy_before_check'
-    # delete '/delete',         to: 'users#destroy'
+    # mes
+    get    '/show_me/',   to: 'mes#show'
+    put    '/update_me/', to: 'users#update'
 
-    # tasks
-    get    '/list-task',           to: 'tasks#index'
-    get    '/detail-task/:id',     to: 'tasks#show'
-    put    '/update-task/:id',     to: 'tasks#update'
-    post   '/create-task/:id',     to: 'tasks#create'
-    delete '/delete-task/:id',     to: 'tasks#destroy'
+    # ruby_skills
+    get    '/list_ruby_skills/',   to: 'ruby_skills#index'
+    get    '/show_ruby_skills/',   to: 'ruby_skills#show'
+    put    '/update_ruby_skills/', to: 'ruby_skills#update'
+    post   '/create_ruby_skills/', to: 'ruby_skills#create'
+    delete '/delete_ruby_skills/', to: 'ruby_skills#destroy'
 
-    # users
-    # get    '/:user_id',          to: 'users#show'
-    # get    '/:user_id/edit',          to: 'users#edit'
-    # post   '/:user_id/update',            to: 'users#update'
-    # get    '/:user_id/update_before_check', to: 'users#update_before_check'
-    # get    '/:user_id/delete_before_check', to: 'users#destroy_before_check'
-    # delete '/delete',         to: 'users#destroy'
+    # rails_skills
+    get    '/list_rails_skills',    to: 'rails_skills#index'
+    get    '/show_rails_skills/',   to: 'rails_skills#show'
+    put    '/update_rails_skills/', to: 'rails_skills#update'
+    post   '/create_rails_skills/', to: 'rails_skills#create'
+    delete '/delete_rails_skills/', to: 'rails_skills#destroy'
 
-    # 認証てすと
-    get    'tasks',          to: 'tasks#x_index'
-    get    '/tasks/:id',     to: 'tasks#x_show'
-    post   '/tasks/:id',     to: 'tasks#x_create'
-    put    '/tasks/:id',     to: 'tasks#x_update'
-    delete '/tasks/:id',     to: 'tasks#x_destroy'
+    # react_nextjs_skills
+    get    '/list_react_nextjs_skills',          to: 'react_and_nextjs_skills#index'
+    get    '/show_nextjs_skills/:type/:id',      to: 'react_and_nextjs_skills#show'
+    put    '/update_react_nextjs_skills/:type/', to: 'react_and_nextjs_skills#update'
+    post   '/create_react_nextjs_skills/:type/', to: 'react_and_nextjs_skills#create'
+    delete '/delete_react_nextjs_skills/:type/', to: 'react_and_nextjs_skills#destroy'
   end
-  # resources :posts
 end
