@@ -1,6 +1,7 @@
 module Mes
-  class SetMeIncludesReactOrNextJsSkillsQuery > Query
-    def initialize({type: type, id: id, relation: Me.find(1)}) # ポートフォリオなので固定値いれました。
+  class SetMeIncludesReactOrNextJsSkillsQuery < Query
+    # 今回の固定値は許容しました
+    def initialize({type: type, id: id, relation: Me.where(id: 1)})
       @relation = relation
       @id = params[:id]
       @type = params[:type]

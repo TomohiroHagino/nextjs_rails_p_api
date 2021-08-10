@@ -1,4 +1,4 @@
-class RailsSkillsCreator
+class RailsSkillCreator
   attr_accessor :rails_skills
   delegate :call, to: :new
 
@@ -8,8 +8,8 @@ class RailsSkillsCreator
   end
 
   def call
-    true_or_messsage = klass.new(rails_skill_params).create
-    true_or_messsage ? true_or_messsage
-                     : klass.errors
+    resource = klass.new(rails_skill_params)
+    resource.create ? true
+                    : resource.errors
   end
 end

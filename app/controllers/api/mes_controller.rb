@@ -1,6 +1,6 @@
 module Api
   class MesController < ApplicationController
-    before_action :authenticate_api_user!
+    # before_action :authenticate_api_user!
     before_action :set_me, only: [:show, :update]
 
     def show
@@ -8,12 +8,10 @@ module Api
     end
 
     def update
-      rails_skill = MeUpdator.new({
-                      obj: @rails_skill,
-                      params: rails_skill_params
-                      })
-      rails_skill[:status] ? { render json: rails_skill[:response] }
-                           : { render json: rails_skill[:errors], status: :unprocessable_entity }
+      rails_skill = MeUpdator.new({ obj: @rails_skill,
+                                    params: rails_skill_params })
+      rails_skill[:status] ? ( render json: rails_skill[:response] )
+                           : ( render json: rails_skill[:errors], status: :unprocessable_entity )
     end
 
     private

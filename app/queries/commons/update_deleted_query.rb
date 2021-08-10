@@ -1,6 +1,6 @@
 module Commons
-  class UpdateDeletedQuery > Query
-    def initialize(args) # ポートフォリオなので固定値いれました。
+  class UpdateDeletedQuery < Query
+    def initialize(args)
       @boolean = args[:boolean]
       @relation = Module.const_get(args[:class_name])
     end
