@@ -1,4 +1,5 @@
 module Commons
+  # 現在未利用
   class SearchMyselfSkillsQuery > Query
     def initialize(args)
       @boolean = args.fetch(:boolean) || false

@@ -1,21 +1,19 @@
 module Mes
   class SetMeIncludesReactOrNextJsSkillsQuery < Query
     # 今回の固定値は許容しました
-    def initialize({type: type, id: id, relation: Me.where(id: 1)})
-      @relation = relation
-      @id = params[:id]
-      @type = params[:type]
+    def initialize
+      @relation = Module.const_get("Me")
     end
 
-    def call
-      if type == "react"
+    def call(args)
+      if args[:type] == "react"
         @relation.eager_load(:react_skills).
                   where(react_skills: { deleted: false }).
-                  find(react_skills: { id: id })
+                  find_by(react_skills: { id: args[:id].gsub("React.js","") })
       else
         @relation.eager_load(:next_js_skills).
                   where(next_js_skills: { deleted: false }).
-                  find(next_js_skills: { id: id })
+                  find_by(next_js_skills: { id: args[:id].gsub("Next.js","") })
       end
     end
   end

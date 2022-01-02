@@ -34,7 +34,13 @@ module App
 
     # サービスをオートロードする
     config.autoload_paths += %W(#{config.root}/app/services)
+    config.autoload_paths += %W(#{config.root}/app/repositories)
+    config.autoload_paths += %W(#{config.root}/app/repositories/me)
+    config.autoload_paths += %W(#{config.root}/app/repositories/rails_skill)
+    config.autoload_paths += %W(#{config.root}/app/repositories/ruby_skill)
+    config.autoload_paths += %W(#{config.root}/app/repositories/react_or_nextjs_skill)
     config.autoload_paths += %W(#{config.root}/app/queries)
+    config.autoload_paths += %W(#{config.root}/app/queries/*)
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
