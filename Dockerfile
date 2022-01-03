@@ -1,10 +1,26 @@
-FROM ruby:2.7
+FROM ruby:2.7.2-alpine
 
 ENV LANG=C.UTF-8 \
   TZ=Asia/Tokyo
 
 WORKDIR /app
-RUN apt-get update -qq && apt-get install -y nodejs default-mysql-client
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+        gcc \
+        g++ \
+        libc-dev \
+        libxml2-dev \
+        linux-headers \
+        make \
+        mysql-client \
+        mysql-dev \
+        nodejs \
+        tzdata \
+        build-base \
+        curl-dev \
+        yarn
+
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
