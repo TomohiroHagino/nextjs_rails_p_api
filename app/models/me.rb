@@ -7,5 +7,4 @@ class Me < ApplicationRecord
   scope :myself_react_and_next_js_skills, Mes::MyselfReactAndNextJsSkillsQuery
   scope :set_me_includes_react_or_next_js_skill, Mes::SetMeIncludesReactOrNextJsSkillsQuery
   scope :search_myself, Mes::SearchMyselfQuery
-  # scope :update_deleted, Commons::UpdateDeletedQuery
 end

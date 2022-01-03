@@ -1,6 +1,5 @@
 module Mes
   class SetMeIncludesReactOrNextJsSkillsQuery < Query
-    # 今回の固定値は許容しました
     def initialize
       @relation = Module.const_get("Me")
     end

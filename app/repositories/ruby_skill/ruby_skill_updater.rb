@@ -2,12 +2,12 @@ class RubySkillUpdater
   attr_accessor :ruby_skill, :ruby_skill_params
 
   def initialize(args)
-    @ruby_skill = args[:obj]
-    @ruby_skill_params = args[:params]
+    @ruby_skill = args[:ruby_skill]
+    @ruby_skill_params = args[:ruby_skill_params]
   end
 
   def call
-    ruby_skill.update(ruby_skill_params) ? true
-                                         : ruby_skill.errors
+    ruby_skill.update(ruby_skill_params) ? { updated: true, response: ruby_skill }
+                                         : { updated: false, response: nil, errors: ruby_skill.errors }
   end
 end

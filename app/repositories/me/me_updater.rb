@@ -4,7 +4,7 @@ class MeUpdater
 
   def initialize(args)
     @me = args[:me]
-    @me_params = args[:params]
+    @me_params = args[:me_params]
   end
 
   def call

@@ -39,6 +39,11 @@ module App
     config.autoload_paths += %W(#{config.root}/app/repositories/rails_skill)
     config.autoload_paths += %W(#{config.root}/app/repositories/ruby_skill)
     config.autoload_paths += %W(#{config.root}/app/repositories/react_or_nextjs_skill)
+    config.autoload_paths += %W(#{config.root}/app/repositories/mysql_skill)
+    config.autoload_paths += %W(#{config.root}/app/repositories/ec2_skill)
+    config.autoload_paths += %W(#{config.root}/app/repositories/ecs_skill)
+    config.autoload_paths += %W(#{config.root}/app/repositories/rds_skill)
+    config.autoload_paths += %W(#{config.root}/app/repositories/s3_skill)
     config.autoload_paths += %W(#{config.root}/app/queries)
     config.autoload_paths += %W(#{config.root}/app/queries/*)
 
@@ -47,15 +52,23 @@ module App
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-  #   # Permit cross origin
-  #   config.middleware.use Rack::Cors do
-  #     allow do
-  #       origins '*'
-  #       resource '*',
-  #       headers: :any,
-  #         expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-  #         methods: [:get, :post, :options, :delete, :put]
-  #     end
-  #   end
+    config.session_store :cookie_store, key: '_session_inter'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+
+    # Added middleware manually.
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use ActionDispatch::Session::CookieStore
+    config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+               :headers => :any,
+               :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+               :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
   end
 end

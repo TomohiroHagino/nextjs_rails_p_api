@@ -1,6 +1,5 @@
 module Api
   class MesController < ApplicationController
-    # before_action :authenticate_api_user!
     before_action :set_me, only: [:show, :update]
 
     def show
@@ -9,7 +8,7 @@ module Api
 
     def update
       me = MeUpdater.new({ me: @me,
-                           params: me_params }).call
+                           me_params: me_params }).call
       me[:updated] ? ( render json: me[:response] )
                    : ( render json: me[:errors], status: :unprocessable_entity )
     end

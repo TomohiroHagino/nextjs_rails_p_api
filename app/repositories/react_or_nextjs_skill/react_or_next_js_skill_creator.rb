@@ -9,7 +9,7 @@ class ReactOrNextJsSkillCreator
 
   def call
     resource = klass.new(rails_skill_params)
-    resource.create ? true
-                    : resource.errors
+    resource.create ? { created: true, response: resource }
+                    : { updated: false, response: nil, errors: resource.errors }
   end
 end

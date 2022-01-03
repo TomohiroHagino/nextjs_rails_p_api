@@ -1,5 +1,6 @@
 module Mes
   class MyselfReactAndNextJsSkillsQuery < Query
+    # 今回の固定値1は許容しました。
     def initialize(relation = Me.where(id: 1))
       @relation = relation
     end

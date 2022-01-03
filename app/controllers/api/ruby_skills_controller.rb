@@ -1,6 +1,6 @@
 module Api
   class RubySkillsController < ApplicationController
-    # before_action :authenticate_api_user!
+    before_action :vaidation_token_check
     before_action :set_ruby_skill, only: [:show, :update, :destroy, :destroy]
 
     def index
@@ -8,26 +8,22 @@ module Api
       render json: ruby_skills
     end
 
-    def show
-      render json: @ruby_skills
-    end
-
     def create
       ruby_skill = RubySkillCreator.new({ params: ruby_skill_params })
-      ruby_skill[:status] ? ( render json: ruby_skill[:response] )
-                          : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
+      ruby_skill[:created] ? ( render json: ruby_skill[:response] )
+                           : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      true_or_messages = RubySkillUpdater.new({ obj: @ruby_skill,
-                                          params: ruby_skill_params }).call
-      true_or_messages ? ( render json: { status: true_or_messages } )
-                       : ( render json: true_or_messages, status: :unprocessable_entity )
+      result = RubySkillUpdater.new({ ruby_skill: @ruby_skill,
+                                      ruby_skill_params: ruby_skill_params }).call
+      result[:updated] ? ( render json: result[:response] )
+                       : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
-      ruby_skill = RubySkillDeleter.new({ obj: @ruby_skill,
-                                          params: ruby_skill_params })
+      ruby_skill = RubySkillDeleter.new({ ruby_skill: @ruby_skill,
+                                          ruby_skill_params: ruby_skill_params }).call
       ruby_skill[:status] ? ( render json: ruby_skill[:response] )
                           : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
     end
