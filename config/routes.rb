@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     # react_nextjs_skills
     get    '/list_react_next_js_skills',    to: 'react_and_next_js_skills#index'
     get    '/show_next_js_skills/',         to: 'react_and_next_js_skills#show'
-    put    '/update_react_nextjs_skills/',  to: 'react_and_next_js_skills#update'
-    post   '/create_react_nextjs_skills/', to: 'react_and_next_js_skills#create'
-    put    '/delete_react_nextjs_skills/', to: 'react_and_next_js_skills#destroy'
+    put    '/update_react_next_js_skills/',  to: 'react_and_next_js_skills#update'
+    post   '/create_react_next_js_skills/', to: 'react_and_next_js_skills#create'
+    put    '/delete_react_next_js_skills/', to: 'react_and_next_js_skills#destroy'
 
     # mysql_skills
     get    '/list_mysql_skills',   to: 'mysql_skills#index'

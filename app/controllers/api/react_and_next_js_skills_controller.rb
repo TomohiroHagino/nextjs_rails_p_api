@@ -32,7 +32,7 @@ module Api
 
     def destroy
       react_or_next_js_skill = ReactOrNextJsSkillDeleter.new({ react_or_next_js_skill_params: react_or_next_js_skill_params }).call
-      react_or_next_js_skill[:success] ? ( render json: react_or_next_js_skill[:response] )
+      react_or_next_js_skill[:deleted] ? ( render json: react_or_next_js_skill[:response] )
                                        : ( render json: react_or_next_js_skill[:errors], status: :unprocessable_entity )
     end
 

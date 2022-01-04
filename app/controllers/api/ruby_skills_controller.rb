@@ -24,7 +24,7 @@ module Api
     def destroy
       ruby_skill = RubySkillDeleter.new({ ruby_skill: @ruby_skill,
                                           ruby_skill_params: ruby_skill_params }).call
-      ruby_skill[:status] ? ( render json: ruby_skill[:response] )
+      ruby_skill[:deleted] ? ( render json: ruby_skill[:response] )
                           : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
     end
 
