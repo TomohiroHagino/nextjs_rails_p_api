@@ -9,7 +9,7 @@ class RubySkillCreator
 
   def call
     resource = klass.new(ruby_skill_params)
-    resource.create ? { created: true, response: resource }
-                    : { updated: false, response: nil, errors: resource.errors }
+    resource.create ? { created: true, response: resource, errors: {} }
+                    : { created: false, response: {}, errors: resource.errors }
   end
 end

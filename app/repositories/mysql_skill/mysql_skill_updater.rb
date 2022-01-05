@@ -7,7 +7,7 @@ class MysqlSkillUpdater
   end
 
   def call
-    mysql_skill.update(mysql_skill_params) ? { updated: true, response: mysql_skill }
-                                           : { updated: false, response: nil, errors: mysql_skill.errors }
+    mysql_skill.update(mysql_skill_params) ? { updated: true, response: mysql_skill, errors: {} }
+                                           : { updated: false, response: {}, errors: mysql_skill.errors }
   end
 end

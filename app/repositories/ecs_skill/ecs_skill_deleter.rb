@@ -8,7 +8,7 @@ class EcsSkillDeleter
   end
 
   def call
-    ecs_skill.update(deleted: true) ? { deleted: true, response: ecs_skill }
-                                    : { deleted: false, response: nil, errors: ecs_skill.errors }
+    ecs_skill.update(deleted: true) ? { deleted: true, response: ecs_skill, errors: {} }
+                                    : { deleted: false, response: {}, errors: ecs_skill.errors }
   end
 end

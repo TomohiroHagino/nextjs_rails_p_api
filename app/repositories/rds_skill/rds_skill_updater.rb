@@ -7,7 +7,7 @@ class RdsSkillUpdater
   end
 
   def call
-    rds_skill.update(rds_skill_params) ? { updated: true, response: rds_skill }
-                                       : { updated: false, response: nil, errors: rds_skill.errors }
+    rds_skill.update(rds_skill_params) ? { updated: true, response: rds_skill, errors: {} }
+                                       : { updated: false, response: {}, errors: rds_skill.errors }
   end
 end

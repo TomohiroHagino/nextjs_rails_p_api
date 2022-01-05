@@ -8,7 +8,7 @@ class RubySkillDeleter
   end
 
   def call
-    ruby_skill.update(deleted: true) ? { deleted: true, response: ruby_skill }
-                                     : { deleted: false, response: nil, errors: ruby_skill.errors }
+    ruby_skill.update(deleted: true) ? { deleted: true, response: ruby_skill, errors: {} }
+                                     : { deleted: false, response: {}, errors: ruby_skill.errors }
   end
 end

@@ -8,7 +8,7 @@ class S3SkillDeleter
   end
 
   def call
-    s3_skill.update(deleted: true) ? { deleted: true, response: s3_skill }
+    s3_skill.update(deleted: true) ? { deleted: true, response: s3_skill, errors: {} }
                                    : { deleted: false, response: nil, errors: s3_skill.errors }
   end
 end

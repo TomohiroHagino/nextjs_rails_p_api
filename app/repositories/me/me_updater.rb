@@ -8,7 +8,7 @@ class MeUpdater
   end
 
   def call
-    me.update(me_params) ? { updated: true, response: me }
-                         : { updated: false, response: nil, errors: me.errors }
+    me.update(me_params) ? { updated: true, response: me, errors: {} }
+                         : { updated: false, response: {}, errors: me.errors }
   end
 end

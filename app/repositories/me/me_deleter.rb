@@ -8,7 +8,7 @@ class MeDeleter
   end
 
   def call
-    me.update_deleted(false) ? true
-                              : resource.errors
+    me.update_deleted(false) ?  { deleted: true, response: me, errors: {} }
+                             : { deleted: false, response: {}, errors: me.errors }
   end
 end

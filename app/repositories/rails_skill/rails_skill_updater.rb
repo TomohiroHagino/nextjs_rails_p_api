@@ -7,7 +7,7 @@ class RailsSkillUpdater
   end
 
   def call
-    rails_skill.update(rails_skill_params) ? { updated: true, response: rails_skill }
-                                           : { updated: false, response: nil, errors: rails_skill.errors }
+    rails_skill.update(rails_skill_params) ? { updated: true, response: rails_skill, errors: {} }
+                                           : { updated: false, response: {}, errors: rails_skill.errors }
   end
 end

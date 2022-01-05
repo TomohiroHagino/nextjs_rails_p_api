@@ -12,7 +12,7 @@ class ReactOrNextJsSkillDeleter
   end
 
   def call
-    react_or_next_js_skill.update(deleted: true) ? { deleted: true, response: react_or_next_js_skill }
-                                                 : { deleted: false, response: nil, errors: react_or_next_js_skill.errors }
+    react_or_next_js_skill.update(deleted: true) ? { deleted: true, response: react_or_next_js_skill, errors: {} }
+                                                 : { deleted: false, response: {}, errors: react_or_next_js_skill.errors }
   end
 end

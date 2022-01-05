@@ -8,7 +8,7 @@ class RdsSkillDeleter
   end
 
   def call
-    rds_skill.update(deleted: true) ? { deleted: true, response: rds_skill }
-                                    : { deleted: false, response: nil, errors: rds_skill.errors }
+    rds_skill.update(deleted: true) ? { deleted: true, response: rds_skill, errors: {} }
+                                    : { deleted: false, response: {}, errors: rds_skill.errors }
   end
 end

@@ -8,7 +8,7 @@ class MysqlSkillDeleter
   end
 
   def call
-    mysql_skill.update(deleted: true) ? { deleted: true, response: mysql_skill }
-                                      : { deleted: false, response: nil, errors: mysql_skill.errors }
+    mysql_skill.update(deleted: true) ? { deleted: true, response: mysql_skill, errors: {} }
+                                      : { deleted: false, response: {}, errors: mysql_skill.errors }
   end
 end

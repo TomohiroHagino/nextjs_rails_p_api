@@ -7,7 +7,7 @@ class Ec2SkillUpdater
   end
 
   def call
-    ec2_skill.update(ec2_skill_params) ? { updated: true, response: ec2_skill }
-                                       : { updated: false, response: nil, errors: ec2_skill.errors }
+    ec2_skill.update(ec2_skill_params) ? { updated: true, response: ec2_skill, errors: {} }
+                                       : { updated: false, response: {}, errors: ec2_skill.errors }
   end
 end

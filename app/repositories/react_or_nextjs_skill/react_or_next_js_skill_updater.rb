@@ -11,7 +11,7 @@ class ReactOrNextJsSkillUpdater
   end
 
   def call
-    react_or_next_js_skill.update(title: react_or_next_js_skill_params[:title], body: react_or_next_js_skill_params[:body]) ? { updated: true, response: react_or_next_js_skill }
-                                           : { updated: false, response: nil, errors: react_or_next_js_skill.errors }
+    react_or_next_js_skill.update(title: react_or_next_js_skill_params[:title], body: react_or_next_js_skill_params[:body]) ? { updated: true, response: react_or_next_js_skill, errors: {} }
+                                           : { updated: false, response: {}, errors: react_or_next_js_skill.errors }
   end
 end

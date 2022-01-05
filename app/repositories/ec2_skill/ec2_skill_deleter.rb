@@ -8,7 +8,7 @@ class Ec2SkillDeleter
   end
 
   def call
-    ec2_skill.update(deleted: true) ? { deleted: true, response: ec2_skill }
-                                    : { deleted: false, response: nil, errors: ec2_skill.errors }
+    ec2_skill.update(deleted: true) ? { deleted: true, response: ec2_skill, errors: {} }
+                                    : { deleted: false, response: {}, errors: ec2_skill.errors }
   end
 end

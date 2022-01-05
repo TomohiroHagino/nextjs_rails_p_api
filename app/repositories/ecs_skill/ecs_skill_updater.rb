@@ -7,7 +7,7 @@ class EcsSkillUpdater
   end
 
   def call
-    ecs_skill.update(ecs_skill_params) ? { updated: true, response: ecs_skill }
-                                       : { updated: false, response: nil, errors: ecs_skill.errors }
+    ecs_skill.update(ecs_skill_params) ? { updated: true, response: ecs_skill, errors: {} }
+                                       : { updated: false, response: {}, errors: ecs_skill.errors }
   end
 end

@@ -22,6 +22,6 @@ class ReactNextJsSerializer
       result["body"] = nx.body
       result
     end
-    { react_js_skills: rs_map, next_js_skills: nx_map }.to_json
+    nx_map.concat(rs_map)
   end
 end
