@@ -8,6 +8,7 @@ class ApplicationController < ActionController::API
 
   def validate_token
     user = User.where(email: request.headers["uid"]).last
+    return false unless user.present?
     if user.valid_token?(request.headers["access-token"], request.headers["client"])
       true
     else

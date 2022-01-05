@@ -1,5 +1,6 @@
 module Api
   class MesController < ApplicationController
+    before_action :vaidation_token_check
     before_action :set_me, only: [:show, :update]
 
     def show
