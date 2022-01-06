@@ -4,9 +4,6 @@ Rails.application.routes.draw do
       registrations: 'api/auth/registrations'
     }
 
-    # トークン認証に使用
-    get    '/token_check',   to: 'auths#token_valid_confirm'
-
     # mes
     get    '/show_me',   to: 'mes#show'
     put    '/update_me', to: 'mes#update'
