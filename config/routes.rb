@@ -63,5 +63,8 @@ Rails.application.routes.draw do
     put    '/update_rds_skill/', to: 'rds_skills#update'
     post   '/create_rds_skill/', to: 'rds_skills#create'
     put    '/delete_rds_skill/', to: 'rds_skills#destroy'
+
+    # validator
+    post 'validates/obj', to: 'validates#obj'
   end
 end
