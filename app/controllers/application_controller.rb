@@ -16,6 +16,8 @@ class ApplicationController < ActionController::API
     end
   end
 
+  private
+
   def validation_401
     render json: "バリデーション401", status: 401
   end
