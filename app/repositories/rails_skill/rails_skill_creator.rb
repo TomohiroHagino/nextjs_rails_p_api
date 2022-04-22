@@ -1,5 +1,5 @@
 class RailsSkillCreator
-  attr_accessor :rails_skills
+  attr_accessor :klass, :rails_skill_params
   delegate :call, to: :new
 
   def initialize(args)
@@ -9,7 +9,7 @@ class RailsSkillCreator
 
   def call
     resource = klass.new(rails_skill_params)
-    resource.create ? { created: true, response: resource, errors: {} }
-                    : { created: false, response: {}}, errors: resource.errors }
+    resource.save! ? { created: true, response: resource, errors: {} }
+                    : { created: false, response: {}, errors: resource.errors }
   end
 end

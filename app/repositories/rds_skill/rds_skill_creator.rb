@@ -1,5 +1,5 @@
 class RdsSkillCreator
-  attr_accessor :rds_skills
+  attr_accessor :klass, :rds_skill_params
   delegate :call, to: :new
 
   def initialize(args)
@@ -9,7 +9,7 @@ class RdsSkillCreator
 
   def call
     resource = klass.new(rds_skill_params)
-    resource.create ? { created: true, response: resource, errors: {} }
-                    : { created: false, response: {}, errors: resource.errors }
+    resource.save! ? { created: true, response: resource, errors: {} }
+                   : { created: false, response: {}, errors: resource.errors }
   end
 end

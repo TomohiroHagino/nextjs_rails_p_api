@@ -11,7 +11,7 @@ module Api
     end
 
     def create
-      react_or_next_js_skill = ReactOrNextJsSkillCreator.new({ params: react_or_next_js_skill_params })
+      react_or_next_js_skill = ReactOrNextJsSkillCreator.new({ params: react_or_next_js_skill_params }).call
       react_or_next_js_skill[:created] ? ( render json: react_or_next_js_skill[:response], status: :created )
                                        : ( render json: react_or_next_js_skill[:errors], status: :unprocessable_entity )
     end
@@ -37,6 +37,6 @@ module Api
     end
 
     private
-    def react_or_next_js_skill_params ; params.require(:react_and_next_js_skill).permit(:model, :id, :title, :body) ; end
+    def react_or_next_js_skill_params ; params.require(:react_and_next_js_skill).permit(:model, :id, :me_id, :title, :body) ; end
   end
 end

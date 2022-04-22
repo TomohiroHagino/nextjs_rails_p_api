@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      ec2_skill = Ec2SkillCreator.new({ params: ec2_skill_params })
+      ec2_skill = Ec2SkillCreator.new({ params: ec2_skill_params }).call
       ec2_skill[:created] ? ( render json: ec2_skill[:response], status: :created )
                           : ( render json: ec2_skill[:errors], status: :unprocessable_entity )
     end
@@ -30,6 +30,6 @@ module Api
 
     private
     def set_ec2_skill ; @ec2_skill = Ec2Skill.find(params[:id]) ; end
-    def ec2_skill_params ; params.require(:ec2_skill).permit(:id, :title, :body) ; end
+    def ec2_skill_params ; params.require(:ec2_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end

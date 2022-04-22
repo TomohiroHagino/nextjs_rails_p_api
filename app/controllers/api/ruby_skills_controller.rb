@@ -9,8 +9,8 @@ module Api
     end
 
     def create
-      ruby_skill = RubySkillCreator.new({ params: ruby_skill_params })
-      ruby_skill[:created] ? ( render json: ruby_skill[:response] )
+      ruby_skill = RubySkillCreator.new({ params: ruby_skill_params }).call
+      ruby_skill[:created] ? ( render json: ruby_skill[:response], status: :created )
                            : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
     end
 
@@ -30,6 +30,6 @@ module Api
 
     private
     def set_ruby_skill ; @ruby_skill = RubySkill.find(params[:id]) ; end
-    def ruby_skill_params ; params.require(:ruby_skill).permit(:id, :title, :body) ; end
+    def ruby_skill_params ; params.require(:ruby_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end

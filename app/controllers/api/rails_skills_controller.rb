@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      rails_skill = RailsSkillCreator.new({ params: rails_skill_params })
+      rails_skill = RailsSkillCreator.new({ params: rails_skill_params }).call
       rails_skill[:created] ? ( render json: rails_skill[:response], status: :created )
                             : ( render json: rails_skill[:errors], status: :unprocessable_entity )
     end
@@ -29,6 +29,6 @@ module Api
 
     private
     def set_rails_skill ; @rails_skill = RailsSkill.find(params[:id]) ; end
-    def rails_skill_params ; params.require(:rails_skill).permit(:id, :title, :body) ; end
+    def rails_skill_params ; params.require(:rails_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end
