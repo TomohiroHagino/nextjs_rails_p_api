@@ -9,7 +9,7 @@ class Ec2SkillCreator
 
   def call
     resource = klass.new(ec2_skill_params)
-    resource.save! ? { created: true, response: resource, errors: {} }
-                    : { created: false, response: {}, errors: resource.errors }
+    resource.save ? { created: true, response: resource, errors: {} }
+                  : { created: false, response: {}, errors: resource.errors }
   end
 end

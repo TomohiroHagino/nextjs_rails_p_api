@@ -15,9 +15,7 @@ module Api
     end
 
     def update
-      result = MysqlSkillUpdater.new({ mysql_skill: @mysql_skill,
-                                       mysql_skill_params: mysql_skill_params }).call
-
+      result = MysqlSkillUpdater.new({ mysql_skill: @mysql_skill, mysql_skill_params: mysql_skill_params }).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
@@ -29,7 +27,7 @@ module Api
     end
 
     private
-    def set_mysql_skill ; @mysql_skill = MysqlSkill.find(params[:id]) ; end
+    def set_mysql_skill ; @mysql_skill = MysqlSkill.find(mysql_skill_params[:id]) ; end
     def mysql_skill_params ; params.require(:mysql_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end

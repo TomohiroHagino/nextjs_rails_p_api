@@ -15,9 +15,7 @@ module Api
     end
 
     def update
-      result = S3SkillUpdater.new({ s3_skill: @s3_skill,
-                                    s3_skill_params: s3_skill_params }).call
-
+      result = S3SkillUpdater.new({ s3_skill: @s3_skill, s3_skill_params: s3_skill_params }).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
@@ -29,7 +27,7 @@ module Api
     end
 
     private
-    def set_s3_skill ; @s3_skill = S3Skill.find(params[:id]) ; end
+    def set_s3_skill ; @s3_skill = S3Skill.find(s3_skill_params[:id]) ; end
     def s3_skill_params ; params.require(:s3_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end

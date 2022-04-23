@@ -9,7 +9,7 @@ class S3SkillCreator
 
   def call
     resource = klass.new(s3_skill_params)
-    resource.save! ? { created: true, response: resource, errors: {} }
-                   : { created: false, response: nil, errors: resource.errors }
+    resource.save ? { created: true, response: resource, errors: {} }
+                  : { created: false, response: nil, errors: resource.errors }
   end
 end

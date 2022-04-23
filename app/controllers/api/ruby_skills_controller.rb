@@ -15,8 +15,7 @@ module Api
     end
 
     def update
-      result = RubySkillUpdater.new({ ruby_skill: @ruby_skill,
-                                      ruby_skill_params: ruby_skill_params }).call
+      result = RubySkillUpdater.new({ ruby_skill: @ruby_skill, ruby_skill_params: ruby_skill_params }).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
@@ -25,11 +24,11 @@ module Api
       ruby_skill = RubySkillDeleter.new({ ruby_skill: @ruby_skill,
                                           ruby_skill_params: ruby_skill_params }).call
       ruby_skill[:deleted] ? ( render json: ruby_skill[:response] )
-                          : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
+                           : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
     end
 
     private
-    def set_ruby_skill ; @ruby_skill = RubySkill.find(params[:id]) ; end
+    def set_ruby_skill ; @ruby_skill = RubySkill.find(ruby_skill_params[:id]) ; end
     def ruby_skill_params ; params.require(:ruby_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end

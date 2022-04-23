@@ -15,21 +15,19 @@ module Api
     end
 
     def update
-      result = EcsSkillUpdater.new({ ecs_skill: @ecs_skill,
-                                     ecs_skill_params: ecs_skill_params }).call
-
-      result[:updated] ? ( render json: result[:response] )
+      result = EcsSkillUpdater.new({ ecs_skill: @ecs_skill, ecs_skill_params: ecs_skill_params }).call
+      result[:updated] ? ( render json: result[:response], status: :ok )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
       ecs_skill = EcsSkillDeleter.new({ ecs_skill: @ecs_skill }).call
-      ecs_skill[:deleted] ? ( render json: ecs_skill[:response] )
+      ecs_skill[:deleted] ? ( render json: ecs_skill[:response], status: :ok )
                           : ( render json: ecs_skill[:errors], status: :unprocessable_entity )
     end
 
     private
-    def set_ecs_skill ; @ecs_skill = EcsSkill.find(params[:id]) ; end
+    def set_ecs_skill ; @ecs_skill = EcsSkill.find(ecs_skill_params[:id]) ; end
     def ecs_skill_params ; params.require(:ecs_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end

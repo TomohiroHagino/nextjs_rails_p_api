@@ -15,8 +15,7 @@ module Api
     end
 
     def update
-      result = RdsSkillUpdater.new({ rds_skill: @rds_skill,
-                                     rds_skill_params: rds_skill_params }).call
+      result = RdsSkillUpdater.new({ rds_skill: @rds_skill, rds_skill_params: rds_skill_params }).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
@@ -28,7 +27,7 @@ module Api
     end
 
     private
-    def set_rds_skill ; @rds_skill = RdsSkill.find(params[:id]) ; end
+    def set_rds_skill ; @rds_skill = RdsSkill.find(rds_skill_params[:id]) ; end
     def rds_skill_params ; params.require(:rds_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end

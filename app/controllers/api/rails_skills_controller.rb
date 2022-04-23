@@ -15,8 +15,7 @@ module Api
     end
 
     def update
-      result = RailsSkillUpdater.new({ rails_skill: @rails_skill,
-                                       rails_skill_params: rails_skill_params }).call
+      result = RailsSkillUpdater.new({ rails_skill: @rails_skill, rails_skill_params: rails_skill_params }).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
@@ -28,7 +27,7 @@ module Api
     end
 
     private
-    def set_rails_skill ; @rails_skill = RailsSkill.find(params[:id]) ; end
+    def set_rails_skill ; @rails_skill = RailsSkill.find(rails_skill_params[:id]) ; end
     def rails_skill_params ; params.require(:rails_skill).permit(:id, :me_id, :title, :body) ; end
   end
 end
