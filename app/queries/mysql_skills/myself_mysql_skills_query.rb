@@ -8,7 +8,7 @@ module MysqlSkills
     def call
       @relation.eager_load(:me).
                 where(mysql_skills: {deleted: false}).
-                where(mes: {id: 1})
+                where(mes: {id: Rails.application.credentials.me})
     end
   end
 end

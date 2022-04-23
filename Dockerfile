@@ -19,6 +19,7 @@ RUN apk update && \
         tzdata \
         build-base \
         curl-dev \
+        vim \
         yarn
 
 COPY Gemfile /app/Gemfile
