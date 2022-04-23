@@ -4,6 +4,10 @@ class MyselfSkillValidator < BaseValidator
   class TitleBlankError < Error
     MSG = 'タイトルを入力してください'
   end
+  # タイトルが長すぎる
+  class TitleLengthError < Error
+    MSG = 'タイトルは50文字以内にしてください'
+  end
   # 内容が空白
   class BodyBlankError < Error
     MSG = '内容を入力してください'
@@ -17,6 +21,7 @@ class MyselfSkillValidator < BaseValidator
   def validate
     error_messages = []
     error_messages << TitleBlankError::MSG if @obj[:title].blank?
+    error_messages << TitleLengthError::MSG if @obj[:title].length > 50
     error_messages << BodyBlankError::MSG if @obj[:body].blank?
     raise MyselfSkillValidatorError.new(msg = error_messages) if error_messages.size > 0
   end

@@ -9,7 +9,7 @@ module Mes
       @relation.eager_load(:react_skills,:next_js_skills).
                 where(react_skills: { deleted: false }).
                 where(next_js_skills: { deleted: false }).
-                first
+                find_by(mes: {id: 1})
     end
   end
 end
