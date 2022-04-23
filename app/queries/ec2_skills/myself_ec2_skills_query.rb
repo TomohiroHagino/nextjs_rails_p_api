@@ -4,7 +4,6 @@ module Ec2Skills
       @relation = relation
     end
 
-    # 今回の固定値1は許容しました。
     def call
       @relation.eager_load(:me).
                 where(ec2_skills: {deleted: false}).
