@@ -1,6 +1,7 @@
 module Mes
   class SearchMyselfQuery < Query
-    def initialize(relation = Me.find(1)) # 今回自身の情報を呼び出す固定値は許容しました。
+    # 自分のデータを確実に見てもらいたいので固定値1は許容。
+    def initialize(relation = Me.find(1))
       @relation = relation
     end
 

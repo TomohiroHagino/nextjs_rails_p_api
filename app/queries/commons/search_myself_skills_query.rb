@@ -6,7 +6,7 @@ module Commons
       @relation = Module.const_get(args[:class_name])
     end
 
-    # ポートフォリオなので固定値1は許容しました。
+    # 自分のデータを確実に見てもらいたいので固定値1は許容。
     def call
       @relation.eager_load(:me).
                 where(mes: {id: 1})

@@ -4,7 +4,7 @@ module S3Skills
       @relation = relation
     end
 
-    # 今回の固定値1は許容しました。
+    # 自分のデータを確実に見てもらいたいので固定値1は許容。
     def call
       @relation.eager_load(:me).
                 where(s3_skills: {deleted: false}).
