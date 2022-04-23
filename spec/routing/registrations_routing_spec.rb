@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::Auth::RegistrationsController, type: :routing do
-  describe 'routing' do
+  describe 'ログイン周り' do
     it 'routes to #new' do
       expect(get: '/api/auth/sign_up').to route_to('api/auth/registrations#new')
     end

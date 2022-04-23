@@ -13,7 +13,7 @@ describe 'MyselfSkillValidatorError' do
     expect{ title_blank.validate }.to raise_error(MyselfSkillValidator::MyselfSkillValidatorError)
   end
 
-  it '有効' do
+  it '有効なパターンのときはエラーが発生しない' do
     expect{ title_and_body.validate }.not_to raise_error
   end
 end
