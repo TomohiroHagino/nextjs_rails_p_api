@@ -26,7 +26,7 @@ RSpec.describe Me, type: :model do
       end
     end
 
-    # 自己紹介アプリなので、id=1は必ず存在しなければならない。
+    # Meオブジェクトのid=1のレコードは必ず存在しなければならない。
     # context 'オブジェクトが取得できない' do
     # end
   end
