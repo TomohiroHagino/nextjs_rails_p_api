@@ -7,9 +7,7 @@ module Commons
     end
 
     def call
-      @relation.eager_load(:me).
-                where(mes: {id: Rails.application.credentials.me})
-                # where(deleted: false)
+      @relation.find(id: Rails.application.credentials.me)
     end
   end
 end

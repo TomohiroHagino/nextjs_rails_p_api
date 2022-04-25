@@ -5,9 +5,10 @@ module RubySkills
     end
 
     def call
-      @relation.eager_load(:me).
-                where(ruby_skills: {deleted: false}).
-                where(mes: {id: Rails.application.credentials.me})
+      @relation.select('ruby_skills.id,ruby_skills.title,ruby_skills.body')
+               .joins(:me)
+               .where(ruby_skills: {deleted: false})
+               .where(mes: {id: Rails.application.credentials.me})
     end
   end
 end

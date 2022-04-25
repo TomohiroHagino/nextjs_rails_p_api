@@ -5,9 +5,10 @@ module Ec2Skills
     end
 
     def call
-      @relation.eager_load(:me).
-                where(ec2_skills: {deleted: false}).
-                where(mes: {id: Rails.application.credentials.me})
+      @relation.select('ec2_skills.id,ec2_skills.title,ec2_skills.body')
+               .joins(:me)
+               .where(ec2_skills: {deleted: false})
+               .where(mes: {id: Rails.application.credentials.me})
     end
   end
 end

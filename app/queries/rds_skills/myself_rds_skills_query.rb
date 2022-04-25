@@ -5,9 +5,10 @@ module RdsSkills
     end
 
     def call
-      @relation.eager_load(:me).
-                where(rds_skills: {deleted: false}).
-                where(mes: {id: Rails.application.credentials.me})
+      @relation.select('rds_skills.id,rds_skills.title,rds_skills.body')
+               .joins(:me)
+               .where(rds_skills: {deleted: false})
+               .where(mes: {id: Rails.application.credentials.me})
     end
   end
 end
