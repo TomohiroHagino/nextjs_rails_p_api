@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      rails_skill = RailsSkillCreator.new({ params: rails_skill_params }).call
+      rails_skill = RailsSkillCreator.new({ rails_skill_params: rails_skill_params }).call
       rails_skill[:created] ? ( render json: rails_skill[:response], status: :created )
                             : ( render json: rails_skill[:errors], status: :unprocessable_entity )
     end

@@ -4,7 +4,7 @@ class S3SkillCreator
 
   def initialize(args)
     @klass = Module.const_get("S3Skill")
-    @s3_skill_params = args[:params]
+    @s3_skill_params = args[:s3_skill_params]
   end
 
   def call

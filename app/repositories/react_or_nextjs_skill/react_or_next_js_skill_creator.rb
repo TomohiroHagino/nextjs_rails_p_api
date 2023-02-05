@@ -4,7 +4,7 @@ class ReactOrNextJsSkillCreator
 
   def initialize(args)
     @klass = Module.const_get("NextJsSkill")
-    @nextjs_skill_params = args[:params]
+    @nextjs_skill_params = args[:react_or_next_js_skill_params]
   end
 
   def call

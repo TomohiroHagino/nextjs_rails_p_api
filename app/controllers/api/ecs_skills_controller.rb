@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      ecs_skill = EcsSkillCreator.new({ params: ecs_skill_params }).call
+      ecs_skill = EcsSkillCreator.new({ ecs_skill_params: ecs_skill_params }).call
       ecs_skill[:created] ? ( render json: ecs_skill[:response], status: :created )
                           : ( render json: ecs_skill[:errors], status: :unprocessable_entity )
     end

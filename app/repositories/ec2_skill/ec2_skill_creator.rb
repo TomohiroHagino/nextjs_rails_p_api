@@ -4,7 +4,7 @@ class Ec2SkillCreator
 
   def initialize(args)
     @klass = Module.const_get("Ec2Skill")
-    @ec2_skill_params = args[:params]
+    @ec2_skill_params = args[:ec2_skill_params]
   end
 
   def call

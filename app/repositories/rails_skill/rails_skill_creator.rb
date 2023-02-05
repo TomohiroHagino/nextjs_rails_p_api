@@ -4,7 +4,7 @@ class RailsSkillCreator
 
   def initialize(args)
     @klass = Module.const_get("RailsSkill")
-    @rails_skill_params = args[:params]
+    @rails_skill_params = args[:rails_skill_params]
   end
 
   def call

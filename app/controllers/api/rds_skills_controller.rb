@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      rds_skill = RdsSkillCreator.new({ params: rds_skill_params }).call
+      rds_skill = RdsSkillCreator.new({ rds_skill_params: rds_skill_params }).call
       rds_skill[:created] ? ( render json: rds_skill[:response], status: :created )
                           : ( render json: rds_skill[:errors], status: :unprocessable_entity )
     end

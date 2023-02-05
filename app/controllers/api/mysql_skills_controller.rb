@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      mysql_skill = MysqlSkillCreator.new({ params: mysql_skill_params }).call
+      mysql_skill = MysqlSkillCreator.new({ mysql_skill_params: mysql_skill_params }).call
       mysql_skill[:created] ? ( render json: mysql_skill[:response], status: :created )
                             : ( render json: mysql_skill[:errors], status: :unprocessable_entity )
     end

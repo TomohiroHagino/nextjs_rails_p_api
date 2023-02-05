@@ -4,7 +4,7 @@ class EcsSkillCreator
 
   def initialize(args)
     @klass = Module.const_get("EcsSkill")
-    @ecs_skill_params = args[:params]
+    @ecs_skill_params = args[:ecs_skill_params]
   end
 
   def call

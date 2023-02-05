@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      s3_skill = S3SkillCreator.new({ params: s3_skill_params }).call
+      s3_skill = S3SkillCreator.new({ s3_skill_params: s3_skill_params }).call
       s3_skill[:created] ? ( render json: s3_skill[:response], status: :created )
                          : ( render json: s3_skill[:errors], status: :unprocessable_entity )
     end

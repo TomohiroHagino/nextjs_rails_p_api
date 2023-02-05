@@ -4,7 +4,7 @@ class MysqlSkillCreator
 
   def initialize(args)
     @klass = Module.const_get("MysqlSkill")
-    @mysql_skill_params = args[:params]
+    @mysql_skill_params = args[:mysql_skill_params]
   end
 
   def call
