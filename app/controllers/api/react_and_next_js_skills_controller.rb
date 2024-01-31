@@ -3,6 +3,7 @@ module Api
 
     def index
       me = Me.myself_react_and_next_js_skills
+      byebug
       react_and_next_js_skills_json = ReactNextJsSerializer.new({
                                         react_js_skills: me.react_skills,
                                         next_js_skills: me.next_js_skills,
