@@ -9,19 +9,19 @@ module Api
     end
 
     def create
-      rails_skill = RailsSkillCreator.new({ rails_skill_params: rails_skill_params }).call
+      rails_skill = RailsSkillCreator.new(rails_skill_params: rails_skill_params).call
       rails_skill[:created] ? ( render json: rails_skill[:response], status: :created )
                             : ( render json: rails_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      result = RailsSkillUpdater.new({ rails_skill: @rails_skill, rails_skill_params: rails_skill_params }).call
+      result = RailsSkillUpdater.new(rails_skill: @rails_skill, rails_skill_params: rails_skill_params).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
-      rails_skill = RailsSkillDeleter.new({ rails_skill: @rails_skill }).call
+      rails_skill = RailsSkillDeleter.new(rails_skill: @rails_skill).call
       rails_skill[:deleted] ? ( render json: rails_skill[:response] )
                             : ( render json: rails_skill[:errors], status: :unprocessable_entity )
     end

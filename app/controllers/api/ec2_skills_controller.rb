@@ -9,19 +9,19 @@ module Api
     end
 
     def create
-      ec2_skill = Ec2SkillCreator.new({ ec2_skill_params: ec2_skill_params }).call
+      ec2_skill = Ec2SkillCreator.new(ec2_skill_params: ec2_skill_params).call
       ec2_skill[:created] ? ( render json: ec2_skill[:response], status: :created )
                           : ( render json: ec2_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      result = Ec2SkillUpdater.new({ ec2_skill: @ec2_skill, ec2_skill_params: ec2_skill_params }).call
+      result = Ec2SkillUpdater.new(ec2_skill: @ec2_skill, ec2_skill_params: ec2_skill_params).call
       result[:updated] ? ( render json: result[:response], status: :ok )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
-      ec2_skill = Ec2SkillDeleter.new({ ec2_skill: @ec2_skill }).call
+      ec2_skill = Ec2SkillDeleter.new(ec2_skill: @ec2_skill).call
       ec2_skill[:deleted] ? ( render json: ec2_skill[:response], status: :ok )
                           : ( render json: ec2_skill[:errors], status: :unprocessable_entity )
     end

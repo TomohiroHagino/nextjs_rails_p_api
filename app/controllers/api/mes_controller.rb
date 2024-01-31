@@ -8,7 +8,7 @@ module Api
     end
 
     def update
-      me = MeUpdater.new({ me: @me, me_params: me_params }).call
+      me = MeUpdater.new(me: @me, me_params: me_params).call
       me[:updated] ? ( render json: me[:response] )
                    : ( render json: me[:errors], status: :unprocessable_entity )
     end

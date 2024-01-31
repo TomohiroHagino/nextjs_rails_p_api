@@ -3,27 +3,27 @@ module Api
 
     def index
       me = Me.myself_react_and_next_js_skills
-      react_and_next_js_skills_json = ReactNextJsSerializer.new({
+      react_and_next_js_skills_json = ReactNextJsSerializer.new(
                                         react_js_skills: me.react_skills,
                                         next_js_skills: me.next_js_skills,
-                                      }).call
+                                      ).call
       render json: react_and_next_js_skills_json 
     end
 
     def create
-      react_or_next_js_skill = ReactOrNextJsSkillCreator.new({ react_or_next_js_skill_params: react_or_next_js_skill_params }).call
+      react_or_next_js_skill = ReactOrNextJsSkillCreator.new(react_or_next_js_skill_params: react_or_next_js_skill_params).call
       react_or_next_js_skill[:created] ? ( render json: react_or_next_js_skill[:response], status: :created )
                                        : ( render json: react_or_next_js_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      react_or_next_js_skill = ReactOrNextJsSkillUpdater.new({ react_or_next_js_skill_params: react_or_next_js_skill_params }).call
+      react_or_next_js_skill = ReactOrNextJsSkillUpdater.new(react_or_next_js_skill_params: react_or_next_js_skill_params).call
       if react_or_next_js_skill[:updated]
         me = Me.myself_react_and_next_js_skills
-        react_and_next_js_skills_json = ReactNextJsSerializer.new({
+        react_and_next_js_skills_json = ReactNextJsSerializer.new(
                                           react_js_skills: me.react_skills,
                                           next_js_skills: me.next_js_skills,
-                                        }).call
+                                        ).call
         render json: react_and_next_js_skills_json
       else
         render json: react_or_next_js_skill[:errors], status: :unprocessable_entity
@@ -31,7 +31,7 @@ module Api
     end
 
     def destroy
-      react_or_next_js_skill = ReactOrNextJsSkillDeleter.new({ react_or_next_js_skill_params: react_or_next_js_skill_params }).call
+      react_or_next_js_skill = ReactOrNextJsSkillDeleter.new(react_or_next_js_skill_params: react_or_next_js_skill_params).call
       react_or_next_js_skill[:deleted] ? ( render json: react_or_next_js_skill[:response] )
                                        : ( render json: react_or_next_js_skill[:errors], status: :unprocessable_entity )
     end

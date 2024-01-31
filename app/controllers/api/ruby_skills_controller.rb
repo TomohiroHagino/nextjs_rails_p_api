@@ -9,20 +9,20 @@ module Api
     end
 
     def create
-      ruby_skill = RubySkillCreator.new({ ruby_skill_params: ruby_skill_params }).call
+      ruby_skill = RubySkillCreator.new(ruby_skill_params: ruby_skill_params).call
       ruby_skill[:created] ? ( render json: ruby_skill[:response], status: :created )
                            : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      result = RubySkillUpdater.new({ ruby_skill: @ruby_skill, ruby_skill_params: ruby_skill_params }).call
+      result = RubySkillUpdater.new(ruby_skill: @ruby_skill, ruby_skill_params: ruby_skill_params).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
-      ruby_skill = RubySkillDeleter.new({ ruby_skill: @ruby_skill,
-                                          ruby_skill_params: ruby_skill_params }).call
+      ruby_skill = RubySkillDeleter.new(ruby_skill: @ruby_skill,
+                                        ruby_skill_params: ruby_skill_params).call
       ruby_skill[:deleted] ? ( render json: ruby_skill[:response] )
                            : ( render json: ruby_skill[:errors], status: :unprocessable_entity )
     end

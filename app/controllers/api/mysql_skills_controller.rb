@@ -9,19 +9,19 @@ module Api
     end
 
     def create
-      mysql_skill = MysqlSkillCreator.new({ mysql_skill_params: mysql_skill_params }).call
+      mysql_skill = MysqlSkillCreator.new(mysql_skill_params: mysql_skill_params).call
       mysql_skill[:created] ? ( render json: mysql_skill[:response], status: :created )
                             : ( render json: mysql_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      result = MysqlSkillUpdater.new({ mysql_skill: @mysql_skill, mysql_skill_params: mysql_skill_params }).call
+      result = MysqlSkillUpdater.new(mysql_skill: @mysql_skill, mysql_skill_params: mysql_skill_params).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
-      mysql_skill = MysqlSkillDeleter.new({ mysql_skill: @mysql_skill }).call
+      mysql_skill = MysqlSkillDeleter.new(mysql_skill: @mysql_skill).call
       mysql_skill[:deleted] ? ( render json: mysql_skill[:response] )
                             : ( render json: mysql_skill[:errors], status: :unprocessable_entity )
     end

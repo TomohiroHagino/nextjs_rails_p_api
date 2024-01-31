@@ -9,19 +9,19 @@ module Api
     end
 
     def create
-      s3_skill = S3SkillCreator.new({ s3_skill_params: s3_skill_params }).call
+      s3_skill = S3SkillCreator.new(s3_skill_params: s3_skill_params).call
       s3_skill[:created] ? ( render json: s3_skill[:response], status: :created )
                          : ( render json: s3_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      result = S3SkillUpdater.new({ s3_skill: @s3_skill, s3_skill_params: s3_skill_params }).call
+      result = S3SkillUpdater.new(s3_skill: @s3_skill, s3_skill_params: s3_skill_params).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
-      s3_skill = S3SkillDeleter.new({ s3_skill: @s3_skill }).call
+      s3_skill = S3SkillDeleter.new(s3_skill: @s3_skill).call
       s3_skill[:deleted] ? ( render json: s3_skill[:response] )
                          : ( render json: s3_skill[:errors], status: :unprocessable_entity )
     end

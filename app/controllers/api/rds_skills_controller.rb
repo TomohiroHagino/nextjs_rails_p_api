@@ -9,19 +9,19 @@ module Api
     end
 
     def create
-      rds_skill = RdsSkillCreator.new({ rds_skill_params: rds_skill_params }).call
+      rds_skill = RdsSkillCreator.new(rds_skill_params: rds_skill_params).call
       rds_skill[:created] ? ( render json: rds_skill[:response], status: :created )
                           : ( render json: rds_skill[:errors], status: :unprocessable_entity )
     end
 
     def update
-      result = RdsSkillUpdater.new({ rds_skill: @rds_skill, rds_skill_params: rds_skill_params }).call
+      result = RdsSkillUpdater.new(rds_skill: @rds_skill, rds_skill_params: rds_skill_params).call
       result[:updated] ? ( render json: result[:response] )
                        : ( render json: result[:errors], status: :unprocessable_entity )
     end
 
     def destroy
-      rds_skill = RdsSkillDeleter.new({ rds_skill: @rds_skill }).call
+      rds_skill = RdsSkillDeleter.new(rds_skill: @rds_skill).call
       rds_skill[:deleted] ? ( render json: rds_skill[:response] )
                           : ( render json: rds_skill[:errors], status: :unprocessable_entity )
     end
